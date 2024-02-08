@@ -27,3 +27,8 @@
   * запускать из папки dist. Парсинг выполняется последовательно т.к. в тз не стояла задача сделать параллельный парсинг нескольких страниц :)
 * Результаты парсинга находятся в архиве **result.zip**. Разложены по папкам-регионам и находятся в отдельных папках для скринов и для данных
 * В качестве линтера использовал [standard-with-typescript](https://www.npmjs.com/package/eslint-config-standard-with-typescript)
+
+Пример команды для запуска из папки **dist**
+```bash
+node index.js https://www.vprok.ru/product/ritter-sport-rit-sport-shokol-tsel-les-oreh-mol-100g--305088 "Рязанская обл."
+```
