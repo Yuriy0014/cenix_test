@@ -28,7 +28,7 @@ async function delay(time) {
 }
 async function scrapeProduct(url, regionKey) {
     const browser = await puppeteer_1.default.launch({
-        headless: false,
+        headless: true,
         args: ['--start-maximized'],
     });
     const page = await browser.newPage();
