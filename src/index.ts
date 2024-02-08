@@ -95,10 +95,7 @@ async function scrapeProduct(url: string, regionKey: keyof typeof Region): Promi
   const regionName = regionKey
 
   // Формирование имени файла для скриншота
-  const dateStr = formatDate(new Date())
-  const region = Region[regionKey].replace(/\s+/g, '-')
-  const screenshotFileName = `${productName}-${region}-${dateStr}.jpg`
-  const screenshotPath = `../results/${regionName}/screens/${screenshotFileName}`
+  const screenshotPath = `../results/screenshot.jpg`
 
   // Прокрутка страницы до конца
   await page.evaluate(() => {
@@ -174,8 +171,7 @@ async function scrapeProduct(url: string, regionKey: keyof typeof Region): Promi
   })
 
   // Формирование имени файла для информации о товаре
-  const productFileName = `${productName}-${region}-${dateStr}.txt`
-  const productFilePath = `../results/${regionName}/text-info/${productFileName}`
+  const productFilePath = `../results/product.txt`
 
   // Сохранение информации о товаре в файл
   writeFileSync(productFilePath, JSON.stringify(productInfo), 'utf-8')

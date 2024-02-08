@@ -55,10 +55,7 @@ async function scrapeProduct(url, regionKey) {
     await page.waitForSelector('[class^="ProductPage_informationBlock__"]', { timeout: 10000 });
     const productName = getProductNameFromUrl(url);
     const regionName = regionKey;
-    const dateStr = formatDate(new Date());
-    const region = Region[regionKey].replace(/\s+/g, '-');
-    const screenshotFileName = `${productName}-${region}-${dateStr}.jpg`;
-    const screenshotPath = `../results/${regionName}/screens/${screenshotFileName}`;
+    const screenshotPath = `../results/screenshot.jpg`;
     await page.evaluate(() => {
         window.scrollTo(0, document.body.scrollHeight);
     });
@@ -97,8 +94,7 @@ async function scrapeProduct(url, regionKey) {
         const reviewCount = parseInt(reviewCountText.replace(/\D/g, ''), 10) || 0;
         return { price, oldPrice, rating, reviewCount };
     });
-    const productFileName = `${productName}-${region}-${dateStr}.txt`;
-    const productFilePath = `../results/${regionName}/text-info/${productFileName}`;
+    const productFilePath = `../results/product.txt`;
     (0, fs_1.writeFileSync)(productFilePath, JSON.stringify(productInfo), 'utf-8');
     await browser.close();
 }
